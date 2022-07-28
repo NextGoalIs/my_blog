@@ -15,7 +15,7 @@ const Home: NextPage<Props> = ({ posts }) => {
   return (
     <div>
       <Head>
-        <title>JK's 개발노트</title>
+        <title>{`JK\`s`} 개발노트</title>
       </Head>
       <div className="posts">
         {posts.map((post: Post, index: number) => (
@@ -31,22 +31,29 @@ export default Home;
 export const getStaticProps: GetStaticProps = async () => {
   const files = fs.readdirSync(path.join("posts"));
 
-  const posts = files.map((file) => {
+  const posts = files.map((file): Post => {
     const slug = file.replace(".md", "");
 
     const markdownWithMeta = fs.readFileSync(path.join("posts", file), "utf-8");
 
-    const { data: frontmatter } = matter(markdownWithMeta);
+    const { data: frontmatter, content } = matter(markdownWithMeta);
+
+    const { title, date, cover_image } = frontmatter;
 
     return {
       slug,
-      frontmatter,
+      frontmatter: {
+        title,
+        date,
+        cover_image,
+      },
+      content,
     };
   });
 
   return {
     props: {
-      posts: posts.sort(sortByDate),
+      posts: posts.sort((a: Post, b: Post) => sortByDate(a, b)),
     },
   };
 };
