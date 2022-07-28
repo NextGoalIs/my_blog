@@ -5,6 +5,7 @@ import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { Post } from "../types";
 import Card from "../components/Card";
+import { sortByDate } from "../utils";
 
 type Props = {
   posts: Post[];
@@ -18,7 +19,7 @@ const Home: NextPage<Props> = ({ posts }) => {
       </Head>
       <div className="posts">
         {posts.map((post: Post, index: number) => (
-          <Card post={post} />
+          <Card key={index} post={post} />
         ))}
       </div>
     </div>
@@ -45,7 +46,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      posts,
+      posts: posts.sort(sortByDate),
     },
   };
 };

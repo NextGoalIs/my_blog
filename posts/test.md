@@ -1,6 +1,6 @@
 ---
 title: "일단 테스트"
-date: "2022-07-28"
+date: "2022-03-11"
 cover_image: "/images/posts/start.jpg"
 ---
 
