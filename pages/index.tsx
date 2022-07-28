@@ -3,22 +3,14 @@ import path from "path";
 import matter from "gray-matter";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-
-type Post = {
-  slug: string;
-  frontmatter: {
-    cover_image: string;
-    date: string;
-    title: string;
-  };
-};
+import { Post } from "../types";
+import Card from "../components/Card";
 
 type Props = {
   posts: Post[];
 };
 
 const Home: NextPage<Props> = ({ posts }) => {
-  console.log(posts);
   return (
     <div>
       <Head>
@@ -26,7 +18,7 @@ const Home: NextPage<Props> = ({ posts }) => {
       </Head>
       <div className="posts">
         {posts.map((post: Post, index: number) => (
-          <h3 key={index}>{post.frontmatter.title}</h3>
+          <Card post={post} />
         ))}
       </div>
     </div>
