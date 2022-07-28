@@ -5,7 +5,7 @@ const Header: React.FC = () => {
     <header>
       <div className="container">
         <Link href="/">
-          <h2>JK's 개발노트</h2>
+          <h2>{`JK\`s`} 개발노트</h2>
         </Link>
       </div>
     </header>
