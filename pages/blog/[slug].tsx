@@ -10,7 +10,6 @@ import Image from "next/image";
 
 const PostPage: React.FC<Post> = ({
   frontmatter: { title, date, cover_image },
-  slug,
   content,
 }) => {
   return (
@@ -53,9 +52,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
+type PathProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
   const markdownWithMeta = fs.readFileSync(
-    path.join("posts", slug + ".md"),
+    path.join("posts", context?.params?.slug + ".md"),
     "utf-8"
   );
 
@@ -64,7 +69,6 @@ export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
   return {
     props: {
       frontmatter,
-      slug,
       content,
     },
   };
