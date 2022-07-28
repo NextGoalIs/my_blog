@@ -6,7 +6,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Header />
-      <Component {...pageProps} />
+      <main className="container">
+        <Component {...pageProps} />
+      </main>
     </>
   );
 }
