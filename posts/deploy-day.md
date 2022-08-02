@@ -6,7 +6,7 @@ cover_image: "/images/posts/start.jpg"
 
 # 블로그 배포 및 리팩토링 공부
 
-Next.js로 만든 블로그를 vercel에 배포했고, 오늘은 자바스크립트 리팩토링 공부를 했습니다.
+Next.js로 만든 블로그를 vercel에 배포했고, 오늘은 자바스크립트 리팩토링 공부를 시작했습니다.
 
 ## 기술 스택 및 세부 구현 사항
 
